@@ -17,6 +17,10 @@ define( ["handlebars", "lodash"],
                             e.response.content.text = JSON.stringify(e.response.content.text);
                             // add a flag to help with handling trailing commas
                             e.response.headers[e.response.headers.length-1].last = true;
+                            e.request.url = e.request.url.replace('http://lc-test.aws.simplereach.com', '');
+                            if(e.response.status === 304){
+                              e.response.status = 200;
+                            }
                             return e;
                         })
                         .value();
