@@ -1,7 +1,3 @@
-/*global require, define*/
-define(function () {
-
-    return function (server) {
 {{#each log.entries}}    
         server.respondWith({{#request}}
             "{{method}}",   
@@ -15,6 +11,3 @@ define(function () {
             {{/response}}]
         );
 {{/each}}
-    };
-
-});
