@@ -19,3 +19,22 @@ Using the command line from this folder, execute this command:
 
 This will enable the folder monitoring process, allowing new and changed .har files to be automatically 
 translated into mocks.
+
+##Configuration
+
+all config changes can be made to:
+    config.js
+
+###url
+
+When making requests to a local server, the base url that sinon expects will be /.
+You can edit config.js to switch the url to be whatever the external url was.
+So if you grab your mocks from "example.com" and have the url set to that in the config,
+sinon will then treat any calls to "example.com/foo" as calls to "/foo".
+
+###outputLocation
+
+To automatically copy the mocks into a folder in your application, you can modify
+outputlocation to save to anywhere you would like.
+
+
