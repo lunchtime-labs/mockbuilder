@@ -9,7 +9,14 @@ define( ["handlebars", "lodash"],
             // only care about the XHR requests
             .filter(function (e) {
               return _.find(e.response.headers, function (h) {
-                return h.name === "X-Requested-With" && h.value === "XMLHttpRequest";
+                var requestedWith =
+                  h.name === "X-Requested-With" && h.value === "XMLHttpRequest";
+                var accessControl =
+                  h.name === "Content-Type" &&
+                  h.value.indexOf("application/json") > -1 ||
+                  h.value.indexOf("text/xml") > -1
+
+                return requestedWith || accessControl;
               });
             })
             .map(function (e) {
